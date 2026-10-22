@@ -1,0 +1,67 @@
+server:
+  port: 8888
+spring:
+  mail:
+    host: smtp.qq.com
+    port: 465
+    username: 1765175055@qq.com
+    password: your-qq-mail-auth-code
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.ssl.enable: true
+
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/auto_rental?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: Asia/Shanghai
+  mvc:
+    format:
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd HH:mm:ss
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+      timeout: 10000ms
+      expire: 60000
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.coder.rental.entity
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+
+#密码加密配置
+encoder:
+  ctype:
+    strength: 6
+    secret: your-encoder-secret
+#${random.uuid}
+request:
+  login-url: /rental/user/login
+
+#阿里云OSS配置
+aliyun:
+  oss:
+    endpoint: https://oss-cn-hangzhou.aliyuncs.com
+    access-key-id: your-access-key-id
+    access-key-secret: your-access-key-secret
+    bucket-name: auto-rental-car-study
+
+auto:
+  info:
+    maintain-mileage: 5000
+
